@@ -134,6 +134,60 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">13 Fibonacci (費氏數列) << <a href='13 Fibonacci (費氏數列).html'>Previous</a> <a href='35 Birthday Months(生日月份).html'>Next</a> >> 35 Birthday Months(生日月份)<br /><h1>21 Write To A File (文件編寫)</h1>
+<p><strong>Exercise 21 (and <a href="https://www.practicepython.org/solution/2014/12/08/21-write-to-a-file-solutions.html">Solution</a>)</strong></p>
+<p style="text-align: justify;">Take the code from the<span> </span><a href="https://www.practicepython.org/exercise/2014/06/06/17-decode-a-web-page.html">How To Decode A Website</a><span> </span>exercise (if you didn’t do it or just want to play with some different code, use the code from the<span> </span><a href="https://www.practicepython.org/solution/2014/07/10/17-decode-a-web-page-solutions.html">solution</a>), and instead of printing the results to a screen, write the results to a txt file. In your code, just make up a name for the file you are saving to.</p>
+<p style="text-align: justify;">從“如何解碼網站”練習中獲取代碼（如果您沒有這樣做，或者只是想使用一些不同的代碼，請使用解決方案中的代碼），而不是將結果打印到屏幕上，而是將結果寫在屏幕上 到txt文件。 在您的代碼中，只需為要保存到的文件命名。</p>
+<p>Extras:</p>
+<ul>
+<li>Ask the user to specify the name of the output file that will be saved.</li>
+<li>要求用戶指定將要保存的輸出文件的名稱。</li>
+</ul>
+<p><strong>Discussion(討論區)</strong></p>
+<p>Topics:</p>
+<ol>
+<li>Writing to a file(寫入文件)</li>
+<li>Gotchas and warnings(陷阱和警告)</li>
+</ol>
+<p><strong>Saving to a file(保存到文件)</strong></p>
+<p style="text-align: justify;">Python makes it very easy to write to a file. Depending on what kind of file you want to write to and what kind of data you are writing, your options are plenty. I will show you the simplest form of writing to a file - writing plain text to a plain old text file. In other words, writing a string to a <code class="highlighter-rouge">.txt</code> file.</p>
+<p style="text-align: justify;">Python使寫入文件變得非常容易。 根據要寫入的文件類型和要寫入的數據類型，您有很多選擇。 我將向您展示最簡單的寫入文件的形式-將純文本寫入純文本文件。 換句話說，將字符串寫入.txt文件。</p>
+<p>The code looks like this:代碼如下：</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">with open('file_to_save.txt', 'w') as open_file:
+    open_file.write('A string to write')</pre>
+<p style="text-align: justify;">An alternate way of writing the same code is like so:</p>
+<p style="text-align: justify;">編寫相同代碼的另一種方法是這樣的：</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">open_file = open('file_to_save.txt', 'w')
+  open_file.write('A string to write')
+  open_file.close()</pre>
+<p style="text-align: justify;">The first is considered better programming practice, but the second might explain a little bit better what is going on in the first code sample.</p>
+<p>第一種被認為是更好的編程實踐，但是第二種可能會更好地解釋第一個代碼示例中發生的事情。</p>
+<p>Let’s go through line by line.</p>
+<p>讓我們逐行進行。</p>
+<p style="text-align: justify;"><span>The </span><code class="highlighter-rouge">with open('file_to_save.txt', 'w') as open_file</code><span><span> </span>syntax is new for us - all it means is that inside the code block indented underneath, there will be a variable called<span> </span></span><code class="highlighter-rouge">open_file</code><span><span> </span>that will represent the file object. You can pick any name for this file - it is just a variable name. The<span> </span></span><code class="highlighter-rouge">open()</code><span><span> </span>function takes two arguments - the first is the name of a file as a string (if the file does not exist, Python will create it), and a second argument that represents<span> </span></span><em>how</em><span><span> </span>the file should be opened. There are a few ways you can open files (read all about it<span> </span></span><a href="https://docs.python.org/3.3/tutorial/inputoutput.html#reading-and-writing-files">at the official Python documentation</a><span>), but in short, there are two most common ones:<span> </span></span><code class="highlighter-rouge">'r'</code><span><span> </span>and<span> </span></span><code class="highlighter-rouge">'w'</code><span>.<span> </span></span><code class="highlighter-rouge">'r'</code><span><span> </span>stands for “read only” and<span> </span></span><code class="highlighter-rouge">'w'</code><span><span> </span>stands for “write only” (you can open for both read and write using<span> </span></span><code class="highlighter-rouge">'r+'</code><span>). You should tell Python which way you want to open the file - you don’t want to modify a file you are only looking at, and opening a file with<span> </span></span><code class="highlighter-rouge">'w'</code><span><span> </span>when you want to only read it will overwrite the old file.</span></p>
+<p style="text-align: justify;"><span>with open（'file_to_save.txt'，'w'）作為open_file語法對我們來說是新的-這意味著在縮進的代碼塊內將有一個名為open_file的變量，它將表示文件對象。 您可以為此文件選擇任何名稱-它只是一個變量名。 open（）函數有兩個參數-第一個參數是字符串形式的文件名（如果文件不存在，Python會創建它），第二個參數表示應如何打開文件。 您可以通過幾種方式打開文件（在Python官方文檔中了解所有相關信息），簡而言之，有兩種最常見的文件：“ r”和“ w”。 “ r”代表“只讀”，“ w”代表“僅寫”（可以使用“ r +”打開以進行讀取和寫入）。 您應該告訴Python您想以哪種方式打開文件-您不想修改僅查看的文件，而只想讀的文件以'w'打開將覆蓋舊文件。</span></p>
+<p style="text-align: justify;"><span>When you open a file, it will look for it in the same directory as the Python program. If there is no file with that name, Python will create a file in that directory with the given name. To look for files in other directories, use the <code class="highlighter-rouge">../</code><span><span> </span>notation to move up and down directories as necessary.</span></span></p>
+<p style="text-align: justify;"><span><span>當您打開文件時，它將在與Python程序相同的目錄中查找。 如果沒有使用該名稱的文件，Python將在該目錄中使用給定名稱創建一個文件。 要在其他目錄中查找文件，請根據需要使用../符號在目錄中上移和下移。</span></span></p>
+<p style="text-align: justify;"><span>As soon as the program exists the </span><code class="highlighter-rouge">with</code><span><span> </span>code block for any reason, it will close the file. In the second code example case, I created the file object by opening the file and saving the object to my variable<span> </span></span><code class="highlighter-rouge">open_file</code><span>. I then had to remember to close the file manually at the end of my program. This is considered worse programming practice, because in case there is an error in the program and it terminates before hitting the<span> </span></span><code class="highlighter-rouge">.close()</code><span><span> </span>statement, there will be a floating open file object somewhere in memory. You do this enough times and it becomes a problem, especially for production environments. For playing around with Python, this is not usually a problem, but why not learn how to program correctly the first time?</span></p>
+<p style="text-align: justify;">一旦程序由於某種原因存在with代碼塊，它將關閉文件。 在第二個代碼示例中，我通過打開文件並將對象保存到變量open_file來創建文件對象。 然後，我必須記住在程序結束時手動關閉文件。 這被認為是較差的編程習慣，因為如果程序中有錯誤並且在命中.close（）語句之前終止，則在內存中的某個位置將有一個浮動的打開文件對象。 您執行此操作的次數足夠多，這將成為一個問題，尤其是對於生產環境。 對於使用Python來說，這通常不是問題，但是為什麼不第一次學習如何正確編程呢？</p>
+<p style="text-align: justify;"><span>The </span><code class="highlighter-rouge">write()</code><span><span> </span>portion is simple - call<span> </span></span><code class="highlighter-rouge">.write()</code><span><span> </span>with a string (if something is not a string, turn it into a string first), and it will write to the end of the file.</span></p>
+<p style="text-align: justify;"><span>write（）部分很簡單-使用字符串調用.write（）（如果不是字符串，請先將其轉換為字符串），然後它將寫入文件的末尾。</span></p>
+<p style="text-align: justify;"><span>When the program exists the <code class="highlighter-rouge">with</code><span><span> </span>statement, the file will automatically be saved. In fact, every time after a<span> </span></span><code class="highlighter-rouge">.write()</code><span><span> </span>statement, the file will be automatically saved.</span></span></p>
+<p style="text-align: justify;">當程序存在with語句時，該文件將自動保存。 實際上，每次執行.write（）語句後，該文件都會自動保存。</p>
+<p style="text-align: justify;"><strong>Gotchas and Warnings(陷阱和警告)</strong></p>
+<p style="text-align: justify;">This all seems simple enough, but there are a few caveats to the file-writing endeavor.</p>
+<p style="text-align: justify;">這一切似乎很簡單，但是文件編寫工作有一些警告。</p>
+<ol style="text-align: justify;">
+<li style="text-align: justify;">You always want to make sure you close a file. The easiest strategy for this is explained above - use the<span> </span><code class="highlighter-rouge">with</code><span> </span>statement rather than trying to manually remember to<span> </span><code class="highlighter-rouge">.close()</code><span> </span>the file.</li>
+<li style="text-align: justify;">Opening a file for writing with<span> </span><code class="highlighter-rouge">'w'</code><span> </span>will overwrite any file that currently exists with that name. If you have previously written data to that file, it is now gone as soon as Python opens it.</li>
+<li style="text-align: justify;">You can write<span> </span><em>any</em><span> </span>kind of object to any kind of file in Python, as long as you specify the correct format. The simplest thing to do is to write strings to a<span> </span><code class="highlighter-rouge">.txt</code><span> </span>file. But remember - you have to convert numbers or objects into strings before you write them to a file. In a later exercise, we’ll talk about writing to other formats.</li>
+</ol>
+<ol style="text-align: justify;">
+<li>您始終要確保關閉文件。 上面已說明了最簡單的策略-使用with語句，而不是嘗試手動記住.close（）文件。</li>
+<li>打開要寫入的文件“ w”將覆蓋該名稱當前存在的任何文件。 如果您之前已將數據寫入該文件，則Python打開後立即消失。</li>
+<li>只要指定正確的格式，就可以在Python中將任何類型的對象寫入任何類型的文件。 最簡單的方法是將字符串寫入.txt文件。 但是請記住-在將數字或對象寫入文件之前，必須將其轉換為字符串。 在以後的練習中，我們將討論編寫其他格式的內容。</li>
+</ol>
+<p style="text-align: justify;"><span>The best way to remember the caveats is to explore them yourself, so have at it!</span></p>
+<p style="text-align: justify;"><span>記住警告的最佳方法是親自探索它們，因此，快來做吧！</span></p>
 <br />13 Fibonacci (費氏數列) << <a href='13 Fibonacci (費氏數列).html'>Previous</a> <a href='35 Birthday Months(生日月份).html'>Next</a> >> 35 Birthday Months(生日月份)</div>
         
     <!-- footer -->
