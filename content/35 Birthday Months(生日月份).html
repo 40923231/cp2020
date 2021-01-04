@@ -134,7 +134,36 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">21 Write To A File (文件編寫) << <a href='21 Write To A File (文件編寫).html'>Previous</a> <br /><h1>35 Birthday Months(生日月份)</h1>
-<p><strong>Exercise 35 (and <a href="https://www.practicepython.org/solution/2017/03/19/35-birthday-months-solutions.html">Solution</a>)</strong></p><br />21 Write To A File (文件編寫) << <a href='21 Write To A File (文件編寫).html'>Previous</a> </div>
+<p><strong>Exercise 35 (and <a href="https://www.practicepython.org/solution/2017/03/19/35-birthday-months-solutions.html">Solution</a>)</strong></p>
+<p style="text-align: justify;"><em>This exercise is Part 3 of 4 of the birthday data exercise series. The other exercises are:<span> </span><a href="https://www.practicepython.org/exercise/2017/01/24/33-birthday-dictionaries.html">Part 1</a>,<span> </span><a href="https://www.practicepython.org/exercise/2017/02/06/34-birthday-json.html">Part 2</a>, and<span> </span><a href="https://www.practicepython.org/exercise/2017/04/02/36-birthday-plots.html">Part 4</a>.</em></p>
+<p style="text-align: justify;"><em>此練習是生日數據練習系列4的第3部分。 其他練習是：第1部分，第2部分和第4部分。</em></p>
+<p style="text-align: justify;">In the<span> </span><a href="https://www.practicepython.org/exercise/2017/02/06/34-birthday-json.html">previous exercise</a><span> </span>we saved information about famous scientists’ names and birthdays to disk. In this exercise, load that JSON file from disk, extract the months of all the birthdays, and count how many scientists have a birthday in each month.</p>
+<p style="text-align: justify;">在上一個練習中，我們將有關著名科學家的姓名和生日的信息保存到磁盤上。 在本練習中，從磁盤加載該JSON文件，提取所有生日的月份，併計算每個月有多少科學家生日。</p>
+<p style="text-align: justify;"><span>Your program should output something like:</span></p>
+<p style="text-align: justify;"><span>您的程序應輸出如下內容：</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">{
+	"May": 3,
+	"November": 2,
+	"December": 1
+}</pre>
+<p><strong>Discussion(討論區)</strong></p>
+<p style="text-align: justify;"><span>You already have the skills to achieve this exercise with concepts we’ve already covered: </span><a href="https://www.practicepython.org/exercise/2014/02/15/03-list-less-than-ten.html">for loops</a><span>,<span> </span></span><a href="https://www.practicepython.org/exercise/2014/12/06/22-read-from-file.html">dictionaries</a><span>, and basic arithmetic. However, I want to talk about a Python built-in called a<span> </span></span><code class="highlighter-rouge">Counter</code></p>
+<p style="text-align: justify;"><span>您已經具備使用我們已經介紹的概念完成此練習的技能：循環，字典和基本算術。 但是，我想談談一個稱為Counter的Python內置函數。</span></p>
+<p style="text-align: justify;"><span>A <a href="https://docs.python.org/3/library/collections.html#collections.Counter"><code class="highlighter-rouge">Counter</code></a><span><span> </span>takes a list and counts how many of each element were in the list. To use the Counter, first import it from<span> </span></span><code class="highlighter-rouge">collections</code><span>:</span></span></p>
+<p style="text-align: justify;"><span><span>計數器獲取一個列表，併計算列表中每個元素的數量。 要使用計數器，請先從集合中將其導入：</span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from collections import Counter</pre>
+<p style="text-align: justify;"><span><span>This lets you use the </span><code class="highlighter-rouge">Counter</code><span><span> </span>data structure built into Python in your program. Then, give it a list:</span></span></p>
+<p style="text-align: justify;"><span><span>這使您可以在程序中使用Python內置的Counter數據結構。 然後，給它一個清單：</span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">sandwiches = ["ham", "cheese", "roast beef", "ham", "cheese", "roast beef", "ham"]
+c = Counter(sandwiches)</pre>
+<pre><span><span>If you <code class="highlighter-rouge">print(c)</code><span>, you will see this:</span></span></span></pre>
+<p style="text-align: justify;"><span><span><span>如果打印（c），將看到以下內容：</span></span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">Counter({"ham": 3, "roast beef": 2, "cheese": 2})</pre>
+<p><span><span><span>This means there are 3 <code class="highlighter-rouge">ham</code><span>, 2<span> </span></span><code class="highlighter-rouge">roast beef</code><span>, and 2<span> </span></span><code class="highlighter-rouge">cheese</code><span><span> </span>sandwiches in my list. I can get this information directly from the<span> </span></span><code class="highlighter-rouge">Counter</code><span>:</span></span></span></span></p>
+<p style="text-align: justify;"><span><span><span><span>這意味著我的列表中有3個火腿，2個烤牛肉和2個奶酪三明治。 我可以直接從櫃檯獲得此信息：</span></span></span></span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">&gt;&gt;&gt; print("There are {} ham sandwiches".format(c["ham"]))
+There are 3 ham sandwiches</pre>
+<pre><span>Hope this is useful!</span><br/><br/></pre><br />21 Write To A File (文件編寫) << <a href='21 Write To A File (文件編寫).html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
